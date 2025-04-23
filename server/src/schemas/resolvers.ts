@@ -1,5 +1,5 @@
-import User from '../models/User.ts';
-import { signToken } from '../utils/auth.ts';
+import User from '../models/User.js';
+import { signToken } from '../utils/auth.js';
 
 const resolvers = {
   Query: {

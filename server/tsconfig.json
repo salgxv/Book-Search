@@ -1,4 +1,5 @@
 {
+  "exclude": ["src/controllers", "src/routes"],
   "extends": "../tsconfig.json",
   "compilerOptions": {
     /* Modules */

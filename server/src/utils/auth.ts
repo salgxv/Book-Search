@@ -5,7 +5,7 @@ const secret = process.env.JWT_SECRET || 'fallbackSecret';
 const expiration = '2h';
 
 export const authMiddleware = ({ req }: { req: Request }) => {
-  const authHeader = (req.headers as Record<string, string>)['authorization'];
+  const authHeader = (req.headers as unknown as Record<string, string>)['authorization'];
   const token = authHeader?.split(' ').pop() || '';
 
   if (!token) return { req };

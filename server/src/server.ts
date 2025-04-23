@@ -29,7 +29,7 @@ app.use(express.json());
 
 // ✅ Root health check route (optional but helpful for Render)
 app.get('/health', (_req: Request, res: Response) => {
-  res.send('API is up ✅');
+  (res as any).send('API is up ✅'); // Fix for TS error
 });
 
 // ✅ Serve frontend in production
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // React Router fallback route
   app.get('*', (_req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+    (res as any).sendFile(path.join(__dirname, '../../client/dist/index.html')); // Fix for TS error
   });
 }
 

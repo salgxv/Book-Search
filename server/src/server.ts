@@ -1,5 +1,6 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import { fileURLToPath } from 'url';
 import path from 'path';
 import db from './config/connection.js';
 import { typeDefs, resolvers } from './schemas/index.js';
@@ -8,6 +9,9 @@ import type { Request, Response } from 'express';
 
 const app = express() as any;
 const PORT = process.env.PORT || 3001;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const server = new ApolloServer({
   typeDefs,

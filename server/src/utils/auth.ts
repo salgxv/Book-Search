@@ -5,7 +5,9 @@ const secret = process.env.JWT_SECRET || 'fallbackSecret';
 const expiration = '2h';
 
 export const authMiddleware = ({ req }: { req: Request }) => {
-  let token = req.headers.authorization?.split(' ').pop() || '';
+  // 🔧 SAFELY ACCESS THE HEADER using bracket notation
+  const authHeader = req.headers['authorization'];
+  const token = authHeader?.split(' ').pop() || '';
 
   if (!token) return { req };
 

@@ -21,8 +21,10 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// ✅ Serve Vite frontend build files in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '../../client/dist')));
+
   app.get('*', (_: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
   });
@@ -30,6 +32,6 @@ if (process.env.NODE_ENV === 'production') {
 
 db.once('open', () => {
   app.listen(PORT, () => {
-    console.log(`Now listening on http://localhost:${PORT}${server.graphqlPath}`);
+    console.log(`🌍 Now listening on http://localhost:${PORT}${server.graphqlPath}`);
   });
 });

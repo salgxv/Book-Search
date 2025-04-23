@@ -4,6 +4,7 @@ import path from 'path';
 import db from './config/connection';
 import { typeDefs, resolvers } from './schemas';
 import { authMiddleware } from './utils/auth';
+import type { Request, Response } from 'express';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,8 +23,8 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (_, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  app.get('*', (_: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
   });
 }
 

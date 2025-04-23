@@ -1,4 +1,4 @@
-import { User } from '../models';
+import User from '../models/User';
 import { signToken } from '../utils/auth';
 
 const resolvers = {

@@ -11,12 +11,12 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3001',
         secure: false,
-        changeOrigin: true
-      }
-    }
+        changeOrigin: true,
+      },
+    },
   },
   build: {
-    outDir: path.resolve(__dirname, 'dist'), // ✅ Ensures the output is inside client/dist
+    outDir: 'dist',      // ✅ Required to output to client/dist
     emptyOutDir: true
-  }
+  },
 });

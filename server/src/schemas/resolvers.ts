@@ -16,12 +16,12 @@ const resolvers = {
       if (!user || !(await user.isCorrectPassword(password))) {
         throw new Error('Incorrect credentials');
       }
-      const token = signToken(user);
+      const token = signToken(user.toObject());
       return { token, user };
     },
     addUser: async (_: any, args: any) => {
       const user = await User.create(args);
-      const token = signToken(user);
+      const token = signToken(user.toObject());
       return { token, user };
     },
     saveBook: async (_: any, { input }: any, context: any) => {

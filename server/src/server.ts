@@ -1,9 +1,9 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import path from 'path';
-import db from './config/connection';
+import db from './config/connection.ts';
 import { typeDefs, resolvers } from './schemas';
-import { authMiddleware } from './utils/auth';
+import { authMiddleware } from './utils/auth.ts';
 import type { Request, Response } from 'express';
 
 const app = express() as any;
